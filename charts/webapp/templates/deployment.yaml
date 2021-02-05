@@ -23,6 +23,9 @@ spec:
       serviceAccountName: {{ template "webapp.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+    {{- if .Values.container.restartPolicy }}
+      restartPolicy: {{ .Values.container.restartPolicy }}
+    {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -30,9 +33,9 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
+          {{- range .Values.container.ports }}
+            - containerPort: {{ . }}
+          {{- end }}
           livenessProbe:
             httpGet:
               path: /

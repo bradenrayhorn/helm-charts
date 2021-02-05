@@ -9,9 +9,21 @@ image:
   tag: stable
   pullPolicy: IfNotPresent
 
-imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+# imagePullSecrets:
+#   - name: gitlab-creds
+
+# imageCredentials:
+#   - registry: registry.gitlab.com
+#     username: example_user
+#     password: example_password
+#     secretName: gitlab-creds
+
+container:
+  ports:
+    - 9001
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -33,7 +45,10 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  # ports:
+  #   - port: 9001
+  #     targetPort: 9001
+  #     name: grpc
 
 ingress:
   enabled: false
