@@ -24,6 +24,14 @@ fullnameOverride: ""
 container:
   ports:
     - 9001
+#   livenessProbe:
+#     httpGet:
+#       path: /
+#       port: http
+#   readinessProbe:
+#     httpGet:
+#       path: /
+#       port: http
 
 serviceAccount:
   # Specifies whether a service account should be created
