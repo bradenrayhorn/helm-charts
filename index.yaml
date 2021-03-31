@@ -11,6 +11,14 @@ entries:
     version: 0.1.0
   webapp:
   - apiVersion: v1
+    created: "2021-03-31T02:46:53.299594995Z"
+    description: A Helm chart for Kubernetes
+    digest: bae14dfc2552f6c3820eb82bba1fb913ded23bd62899bd1f4ba3782cbdb9a9c4
+    name: webapp
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.5.1/webapp-0.5.1.tgz
+    version: 0.5.1
+  - apiVersion: v1
     created: "2021-03-31T02:37:32.492265341Z"
     description: A Helm chart for Kubernetes
     digest: d056cc4deeecd98821fba3b9a2a844a2b056cf4a6346240c3a1a86971c2e9f87
@@ -61,4 +69,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2021-03-31T02:37:32.492290443Z"
+generated: "2021-03-31T02:46:53.299634196Z"
