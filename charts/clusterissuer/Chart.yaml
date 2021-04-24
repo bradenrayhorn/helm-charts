@@ -1,4 +1,4 @@
 apiVersion: v1
 description: A Helm chart for Kubernetes to create ClusterIssuer resources.
 name: clusterissuer
-version: 0.1.0
+version: 0.1.1
