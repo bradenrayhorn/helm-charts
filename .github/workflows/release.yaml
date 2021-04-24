@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@25a956c84d5dd820d28caab9f86b8d183aeeff3d
         with:
           fetch-depth: 0
 
@@ -22,6 +22,6 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@main
+        uses: helm/chart-releaser-action@a996acef7bca5c8b6cfa0edad284102c462dff56
         env:
           CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
