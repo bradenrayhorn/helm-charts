@@ -22,6 +22,9 @@ fullnameOverride: ""
 #     secretName: gitlab-creds
 
 container:
+  annotations:
+    vault.hashicorp.com/agent-inject: "true"
+    vault.hashicorp.com/role: "internal-app"
   ports:
     - 9001
 #   livenessProbe:
