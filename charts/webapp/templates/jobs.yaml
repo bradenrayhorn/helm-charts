@@ -14,6 +14,10 @@ spec:
       name: {{ include "webapp.fullname" $ }}-{{ .name  }}
       labels:
 {{ include "webapp.labels" $ | indent 8 }}
+    {{- if .annotations }}
+      annotations:
+        {{- toYaml .annotations | nindent 8 }}
+    {{- end }}
     spec:
       restartPolicy: Never
       {{- with .containers }}
