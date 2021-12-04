@@ -1,0 +1,25 @@
+{{- range .Values.jobs }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "webapp.fullname" $ }}-{{ .name }}
+  labels:
+{{ include "webapp.labels" $ | indent 4 }}
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  template:
+    metadata:
+      name: {{ include "webapp.fullname" $ }}-{{ .name  }}
+      labels:
+{{ include "webapp.labels" $ | indent 8 }}
+    spec:
+      restartPolicy: Never
+      {{- with .containers }}
+      containers:
+        {{- toYaml . | nindent 6 }}
+      {{- end }}
+---
+{{- end }}
+
