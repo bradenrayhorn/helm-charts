@@ -20,6 +20,7 @@ spec:
     {{- end }}
     spec:
       restartPolicy: Never
+      serviceAccountName: {{ template "webapp.serviceAccountName" $ }}
       {{- with .containers }}
       containers:
         {{- toYaml . | nindent 6 }}
