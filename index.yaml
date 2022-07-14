@@ -19,6 +19,14 @@ entries:
     version: 0.1.0
   static:
   - apiVersion: v1
+    created: "2022-07-14T03:14:26.625054232Z"
+    description: A Helm chart to host static files via nginx.
+    digest: ace5fd7d10ed1d2cf9a1ac39f16693392e2974bfa12b661bb9ad1ccb634fd57f
+    name: static
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/static-0.1.1/static-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v1
     created: "2022-07-14T02:47:55.618984162Z"
     description: A Helm chart to host static files via nginx.
     digest: a880a24ddd8bd1eb49bdd5ef671a72f10ea17fabe3791fdca3380e0367ffbd1b
@@ -166,4 +174,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2022-07-14T02:47:55.619313363Z"
+generated: "2022-07-14T03:14:26.625170166Z"
