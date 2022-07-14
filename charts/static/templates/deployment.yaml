@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "webapp.fullname" . }}
+  labels:
+{{ include "webapp.labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "webapp.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "webapp.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    {{- if .Values.container.annotations }}
+      annotations:
+        {{- toYaml .Values.container.annotations | nindent 8 }}
+    {{- end }}
+    spec:
+      serviceAccountName: {{ template "webapp.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+    {{- if .Values.container.restartPolicy }}
+      restartPolicy: {{ .Values.container.restartPolicy }}
+    {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "nginx:latest"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          {{- if .Values.container.env }}
+          env:
+            {{- toYaml .Values.container.env | nindent 12 }}
+          {{- end }}
+          volumeMounts:
+            - name: nginx-config-volume
+              mountPath: /etc/nginx/conf.d/
+          {{- range .Values.files }}
+            - name: {{ .name }}-volume
+              mountPath: /var/static/{{ .name }}/
+          {{- end }}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: nginx-config-volume
+          configMap:
+            name: nginx-config
+      {{- range .Values.files }}
+        - name: {{ .name }}-volume
+          configMap:
+            name: {{ .name }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
