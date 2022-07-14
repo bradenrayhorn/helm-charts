@@ -17,6 +17,15 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/clusterissuer-0.1.0/clusterissuer-0.1.0.tgz
     version: 0.1.0
+  static:
+  - apiVersion: v1
+    created: "2022-07-14T02:47:55.618984162Z"
+    description: A Helm chart to host static files via nginx.
+    digest: a880a24ddd8bd1eb49bdd5ef671a72f10ea17fabe3791fdca3380e0367ffbd1b
+    name: static
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/static-0.1.0/static-0.1.0.tgz
+    version: 0.1.0
   webapp:
   - apiVersion: v1
     created: "2021-12-04T04:03:44.607384015Z"
@@ -157,4 +166,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-04T04:03:44.607727454Z"
+generated: "2022-07-14T02:47:55.619313363Z"
