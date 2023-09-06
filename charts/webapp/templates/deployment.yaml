@@ -36,7 +36,10 @@ spec:
         - name: {{ .name }}
           image: "{{ .image.repository }}:{{ .image.tag }}"
           {{- if .args }}
-          args: {{ .args }}
+          args: -|
+          {{- range .args }}
+            - {{ . | quote }}
+          {{- end }}
           {{- end }}
           {{- if .env }}
           env:
@@ -80,7 +83,10 @@ spec:
         - name: {{ .name }}
           image: "{{ .image.repository }}:{{ .image.tag }}"
           {{- if .args }}
-          args: {{ .args }}
+          args: -|
+          {{- range .args }}
+            - {{ . | quote }}
+          {{- end }}
           {{- end }}
           {{- if .env }}
           env:
