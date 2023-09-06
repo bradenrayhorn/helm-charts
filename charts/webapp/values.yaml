@@ -94,3 +94,17 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+pvc: []
+# pvc:
+#  - name: app-data
+#    accessMode: ReadWriteOnce
+#    storageClassName: local-path
+#    storageRequest: 2Gi
+
+volumes: []
+# volumes:
+# - name: app-data-vol
+#   pvc: app-data
+#   mountPath: /data
+
