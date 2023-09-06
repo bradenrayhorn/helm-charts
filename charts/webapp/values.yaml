@@ -108,3 +108,5 @@ volumes: []
 #   pvc: app-data
 #   mountPath: /data
 
+sideCars: []
+initContainers: []

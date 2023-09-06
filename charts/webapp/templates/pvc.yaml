@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "webapp.fullname" $ }}-{{ .name }}
+  name: {{ .name }}
 spec:
   accessModes:
     - {{ .accessMode }}

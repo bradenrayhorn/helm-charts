@@ -30,6 +30,24 @@ spec:
     {{- if .Values.container.restartPolicy }}
       restartPolicy: {{ .Values.container.restartPolicy }}
     {{- end }}
+      {{- if .Values.initContainers }}
+      initContainers:
+      {{- range .Values.initContainers }}
+        - name: {{ .name }}
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          {{- if .args }}
+          args: {{ .args }}
+          {{- end }}
+          {{- if .env }}
+          env:
+            {{- toYaml .env | nindent 12 }}
+          {{- end }}
+          {{- if .volumeMounts }}
+          volumeMounts:
+            {{- toYaml .volumeMounts | nindent 12 }}
+          {{- end }}
+      {{- end }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -54,13 +72,25 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.volumes }}
+          {{- if .Values.volumeMounts }}
           volumeMounts:
-          {{- range .Values.volumes }}
-            - name: {{ .name }}
-              mountPath: {{ .mountPath }}
+            {{- toYaml .Values.volumeMounts | nindent 12 }}
           {{- end }}
+      {{- range .Values.sidecars }}
+        - name: {{ .name }}
+          image: "{{ .image.repository }}:{{ .image.tag }}"
+          {{- if .args }}
+          args: {{ .args }}
           {{- end }}
+          {{- if .env }}
+          env:
+            {{- toYaml .env | nindent 12 }}
+          {{- end }}
+          {{- if .volumeMounts }}
+          volumeMounts:
+            {{- toYaml .volumeMounts | nindent 12 }}
+          {{- end }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -75,9 +105,5 @@ spec:
     {{- end }}
     {{- with .Values.volumes }}
       volumes:
-      {{- range . }}
-        - name: {{ .name }}
-          persistentVolumeClaim:
-            claimName: {{ include "webapp.fullname" $ }}-{{ .pvc }}
-      {{- end }}
+        {{- toYaml . | nindent 8 }}
     {{- end }}
