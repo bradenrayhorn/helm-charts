@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "actualbudget.fullname" . }}-server
+  labels:
+    {{- include "actualbudget.labelsServer" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "actualbudget.selectorLabelsServer" . | nindent 6 }}
+  serviceName: {{ include "actualbudget.fullname" . }}-server
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "actualbudget.selectorLabelsServer" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "actualbudget.serviceAccountName" . }}
+      volumes:
+        - name: app-data
+          persistentVolumeClaim:
+            claimName: {{ include "actualbudget.fullname" . }}-data
+      containers:
+        - name: actualbudget-server
+          image: "docker.io/actualbudget/actual-server:latest"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: app-data
+              mountPath: /data/
+          ports:
+            - name: http
+              containerPort: 5006
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5006
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5006
+          resources:
+            {{- toYaml .Values.resources.server | nindent 12 }}
+---
