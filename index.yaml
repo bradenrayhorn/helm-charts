@@ -2,6 +2,14 @@ apiVersion: v1
 entries:
   actualbudget-helm:
   - apiVersion: v2
+    created: "2023-12-22T02:12:27.829000276Z"
+    description: A Helm chart to release actualbudget
+    digest: 99d2cee5a7a1de0536e4abf433f294adaf6a5605bd28e20de584194c32251c7a
+    name: actualbudget-helm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/actualbudget-helm-0.1.1/actualbudget-helm-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2023-12-22T01:55:37.201747516Z"
     description: A Helm chart to release actualbudget
     digest: d16c4af69121231ee329c233daa492f5fa35070f3e07843fbf58c26755b9087f
@@ -215,4 +223,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2023-12-22T01:55:37.201920098Z"
+generated: "2023-12-22T02:12:27.829161487Z"
