@@ -1,0 +1,5 @@
+apiVersion: v2
+name: uptimekuma-helm
+description: A Helm chart to release uptimekuma
+version: 0.1.0
+
