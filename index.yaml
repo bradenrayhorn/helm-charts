@@ -53,6 +53,14 @@ entries:
     version: 0.1.0
   uptimekuma-helm:
   - apiVersion: v2
+    created: "2024-04-14T00:38:27.661310835Z"
+    description: A Helm chart to release uptimekuma
+    digest: 743efa000ca470a21e5e97d05428f577c9d463ad1b6bd494680b111b191172bc
+    name: uptimekuma-helm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/uptimekuma-helm-0.1.2/uptimekuma-helm-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2024-04-14T00:33:59.412279127Z"
     description: A Helm chart to release uptimekuma
     digest: c77e2f288c2b7bace979c09f1ffd847557543943a440443ede83abe13dc68917
@@ -240,4 +248,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2024-04-14T00:33:59.41239775Z"
+generated: "2024-04-14T00:38:27.661454934Z"
