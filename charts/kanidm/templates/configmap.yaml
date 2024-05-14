@@ -12,7 +12,5 @@ data:
     tls_key = "/certs/tls.key"
     domain = "{{ .Values.config.domain }}"
     origin = "{{ .Values.config.origin }}"
-    {{- if .Values.config.trustForwardHeader }}
-    trust_x_forward_for = "{{ .Values.config.trustForwardHeader }}"
-    {{- end }}
+    trust_x_forward_for = {{ .Values.config.trustXForwardedForHeader }}
 
