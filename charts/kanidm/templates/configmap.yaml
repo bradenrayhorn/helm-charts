@@ -10,6 +10,9 @@ data:
     db_path = "/data/kanidm.db"
     tls_chain = "/certs/tls.crt"
     tls_key = "/certs/tls.key"
-    domain = "{{ include ".Values.config.domain" . }}"
-    origin = "{{ include ".Values.config.origin" . }}"
+    domain = "{{ .Values.config.domain }}"
+    origin = "{{ .Values.config.origin }}"
+    {{- if .Values.config.trustForwardHeader }}
+    trust_x_forward_for = "{{ .Values.config.trustForwardHeader }}"
+    {{- end }}
 

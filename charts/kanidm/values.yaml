@@ -16,6 +16,7 @@ image:
 config:
   domain: "idm.example.com"
   origin: "https://idm.example.com:8443"
+  #trustForwardHeader: "CF-Connecting-IP"
 
 nameOverride: ""
 fullnameOverride: ""
@@ -43,9 +44,10 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-pvc-db:
-  storageClassName: local-path
-  storageRequest: 200Mi
+pvc:
+  db:
+    storageClassName: local-path
+    storageRequest: 200Mi
 
 resources:
   ui: {}

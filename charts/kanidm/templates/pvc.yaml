@@ -5,8 +5,8 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: {{ .Values.pvc-db.storageClassName }}
+  storageClassName: {{ .Values.pvc.db.storageClassName }}
   resources:
     requests:
-      storage: {{ .Values.pvc-db.storageRequest }}
+      storage: {{ .Values.pvc.db.storageRequest }}
 
