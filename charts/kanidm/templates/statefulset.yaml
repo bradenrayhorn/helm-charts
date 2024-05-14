@@ -48,11 +48,7 @@ spec:
             - -c
             - >-
                 chown 1000:1000 /db &&
-                chmod 750 /db &&
-                chown root:root /data/server.toml && 
-                chmod 644 /data/server.toml &&
-                chown -R root:root /certs && 
-                chmod 644 /certs
+                chmod 750 /db
 
       containers:
         - name: kanidm-server
