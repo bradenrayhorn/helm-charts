@@ -55,7 +55,7 @@ spec:
               scheme: HTTPS
           readinessProbe:
             httpGet:
-              path: /health
+              path: /status
               port: 8443
               scheme: HTTPS
           resources:
