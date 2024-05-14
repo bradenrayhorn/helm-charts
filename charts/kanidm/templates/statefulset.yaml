@@ -30,6 +30,30 @@ spec:
         - name: app-certs
           secret:
             secretName: kanidm-tls
+      initContainers:
+        - name: permissions
+          image: alpine:3
+          volumeMounts:
+            - name: app-db
+              mountPath: /db
+            - name: app-config
+              mountPath: /data/server.toml
+              subPath: server.toml
+              readOnly: true
+            - name: app-certs
+              mountPath: /certs
+              readOnly: true
+          command: ["/bin/sh"]
+          args:
+            - -c
+            - >-
+                chown 1000:1000 /db &&
+                chmod 750 /db &&
+                chown root:root /data/server.toml && 
+                chmod 644 /data/server.toml &&
+                chown -R root:root /certs && 
+                chmod 644 /certs
+
       containers:
         - name: kanidm-server
           image: "docker.io/kanidm/server:{{ .Values.image.tag }}"

@@ -1,4 +1,4 @@
 apiVersion: v1
 description: Deploys kanidm as single replica
 name: kanidm
-version: 0.1.4
+version: 0.1.5
