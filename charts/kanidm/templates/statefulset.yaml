@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "kanidm.fullname" . }}-server
+  labels:
+    {{- include "kanidm.labelsServer" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "kanidm.selectorLabelsServer" . | nindent 6 }}
+  serviceName: {{ include "kanidm.fullname" . }}-server
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "kanidm.selectorLabelsServer" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "kanidm.serviceAccountName" . }}
+      volumes:
+        - name: app-db
+          persistentVolumeClaim:
+            claimName: {{ include "kanidm.fullname" . }}-db
+        - name: app-config
+          configMap:
+            name: {{ include "kanidm.fullname" . }}-config
+        - name: app-certs
+          secret:
+            secretName: kanidm-tls
+      containers:
+        - name: kanidm-server
+          image: "docker.io/kanidm/server:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: app-db
+              mountPath: /db
+            - name: app-config
+              mountPath: /data/server.toml
+              subPath: server.toml
+              readOnly: true
+            - name: app-certs
+              mountPath: /certs
+              readOnly: true
+          ports:
+            - name: http
+              containerPort: 8443
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /status
+              port: 8443
+              scheme: HTTPS
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8443
+              scheme: HTTPS
+          resources:
+            {{- toYaml .Values.resources.server | nindent 12 }}
+---
+

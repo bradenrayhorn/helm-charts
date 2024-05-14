@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "kanidm.fullname" . }}-server
+  labels:
+    {{- include "kanidm.labelsServer" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8443
+      targetPort: 8443
+      protocol: TCP
+      name: https
+  selector:
+    {{- include "kanidm.selectorLabelsServer" . | nindent 4 }}
+---
