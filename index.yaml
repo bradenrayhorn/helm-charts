@@ -34,6 +34,15 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/clusterissuer-0.1.0/clusterissuer-0.1.0.tgz
     version: 0.1.0
+  kanidm:
+  - apiVersion: v1
+    created: "2024-05-14T01:44:16.3646374Z"
+    description: Deploys kanidm as single replica
+    digest: e52c7c68b2cc6da3976a91bc47d75b79ae251f2e4b083623e0a32b724924a33a
+    name: kanidm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/kanidm-0.1.0/kanidm-0.1.0.tgz
+    version: 0.1.0
   static:
   - apiVersion: v1
     created: "2022-07-14T03:14:26.625054232Z"
@@ -248,4 +257,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2024-04-14T00:38:27.661454934Z"
+generated: "2024-05-14T01:44:16.364741797Z"
