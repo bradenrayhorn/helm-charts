@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "mise.fullname" . }}-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.pvc.db.storageClassName }}
+  resources:
+    requests:
+      storage: {{ .Values.pvc.db.storageRequest }}
+

@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "mise.fullname" . }}-server
+  labels:
+    {{- include "mise.labelsServer" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "mise.selectorLabelsServer" . | nindent 6 }}
+  serviceName: {{ include "mise.fullname" . }}-server
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "mise.selectorLabelsServer" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "mise.serviceAccountName" . }}
+      volumes:
+        - name: app-data
+          persistentVolumeClaim:
+            claimName: {{ include "mise.fullname" . }}-data
+        - name: app-config
+          secret:
+            secretName: mise-config
+        - name: {{ include "mise.fullname" . }}-litestream-config
+          configMap:
+            name: {{ include "mise.fullname" . }}-litestream-config
+      {{- if .Values.litestream.enabled }}
+      initContainers:
+        - name: init-litestream
+          image: litestream/litestream:{{ .Values.litestream.version }}
+          args: ['restore', '-if-db-not-exists', '-if-replica-exists', '/app-data/mise.db']
+          volumeMounts:
+            - name: app-data
+              mountPath: /app-data/
+            - name: {{ include "mise.fullname" . }}-litestream-config
+              mountPath: /etc/litestream.yml
+              subPath: litestream.yml
+          env:
+            - name: LITESTREAM_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.litestream.secret }}
+                  key: LITESTREAM_ACCESS_KEY_ID
+            - name: LITESTREAM_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.litestream.secret }}
+                  key: LITESTREAM_SECRET_ACCESS_KEY
+      {{- end }}
+      containers:
+        - name: mise-server
+          image: "ghcr.io/bradenrayhorn/mise:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: app-data
+              mountPath: /app-data/
+            - name: app-config
+              mountPath: /app-config/server.toml
+              subPath: server.toml
+              readOnly: true
+          env:
+            - name: MISE_CONFIG
+              value: /app-config/server.toml
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health-check
+              port: 3000
+              scheme: HTTP
+          readinessProbe:
+            httpGet:
+              path: /health-check
+              port: 3000
+              scheme: HTTP
+          resources:
+            {{- toYaml .Values.resources.server | nindent 12 }}
+      {{- if .Values.litestream.enabled }}
+        - name: litestream
+          image: litestream/litestream:{{ .Values.litestream.version }}
+          args: ['replicate']
+          volumeMounts:
+            - name: app-data
+              mountPath: /app-data/
+            - name: {{ include "mise.fullname" . }}-litestream-config
+              mountPath: /etc/litestream.yml
+              subPath: litestream.yml
+          env:
+            - name: LITESTREAM_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.litestream.secret }}
+                  key: LITESTREAM_ACCESS_KEY_ID
+            - name: LITESTREAM_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.litestream.secret }}
+                  key: LITESTREAM_SECRET_ACCESS_KEY
+      {{- end }}
+---
+

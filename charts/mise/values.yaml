@@ -1,0 +1,73 @@
+# Default values for mise.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# ! IMPORTANT !
+# A secret named mise-config is required in the namespace.
+#
+# It should contain server.toml with the mise config.
+
+image:
+  pullPolicy: IfNotPresent
+  tag: latest
+
+# optionally enable litestream for sqlite backup
+litestream:
+  enabled: false
+  version: 0.3.13
+  # this secret must be created outside of the helm chart
+  secret: litestream-creds
+  config:
+    dbs:
+      - path: /app-data/mise.db
+        replicas:
+          - type: s3
+            bucket: mybucket
+            endpoint: s3.example.com
+            retention: 192h
+            snapshot-interval: 12h
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+pvc:
+  db:
+    storageClassName: local-path
+    storageRequest: 200Mi
+
+resources:
+  ui: {}
+  server: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
