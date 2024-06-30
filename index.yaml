@@ -107,6 +107,15 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/kanidm-0.1.0/kanidm-0.1.0.tgz
     version: 0.1.0
+  mise:
+  - apiVersion: v1
+    created: "2024-06-30T21:13:25.492410283Z"
+    description: Deploys mise as single replica
+    digest: db0624e9e3193761371a7db6084f119877b5b0c98811d146fd5c8526d7affa32
+    name: mise
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/mise-0.1.0/mise-0.1.0.tgz
+    version: 0.1.0
   static:
   - apiVersion: v1
     created: "2022-07-14T03:14:26.625054232Z"
@@ -321,4 +330,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2024-05-15T03:03:35.669366861Z"
+generated: "2024-06-30T21:13:25.492594086Z"
