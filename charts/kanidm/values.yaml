@@ -48,6 +48,9 @@ pvc:
   db:
     storageClassName: local-path
     storageRequest: 200Mi
+  backups:
+    storageClassName: local-path
+    storageRequest: 200Mi
 
 resources:
   ui: {}

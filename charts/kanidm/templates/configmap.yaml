@@ -13,4 +13,8 @@ data:
     domain = "{{ .Values.config.domain }}"
     origin = "{{ .Values.config.origin }}"
     trust_x_forward_for = {{ .Values.config.trustXForwardedForHeader }}
+    [online_backup]
+    path = "/data/backups/"
+    schedule = "00 22 * * *"
+    versions = 7
 

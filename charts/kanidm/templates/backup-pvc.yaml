@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "kanidm.fullname" . }}-backups
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.pvc.backups.storageClassName }}
+  resources:
+    requests:
+      storage: {{ .Values.pvc.backups.storageRequest }}
+

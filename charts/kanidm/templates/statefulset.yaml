@@ -24,6 +24,9 @@ spec:
         - name: app-db
           persistentVolumeClaim:
             claimName: {{ include "kanidm.fullname" . }}-db
+        - name: app-backups
+          persistentVolumeClaim:
+            claimName: {{ include "kanidm.fullname" . }}-backups
         - name: app-config
           configMap:
             name: {{ include "kanidm.fullname" . }}-config
@@ -37,6 +40,8 @@ spec:
           volumeMounts:
             - name: app-db
               mountPath: /db
+            - name: app-backups
+              mountPath: /data/backups
             - name: app-config
               mountPath: /data/server.toml
               subPath: server.toml
