@@ -4,6 +4,7 @@
 
 image:
   pullPolicy: IfNotPresent
+  tag: 24.10.1-alpine
 
 nameOverride: ""
 fullnameOverride: ""
