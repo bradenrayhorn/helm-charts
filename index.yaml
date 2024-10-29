@@ -134,6 +134,14 @@ entries:
     version: 0.1.0
   nunc-helm:
   - apiVersion: v2
+    created: "2024-10-29T02:40:23.036407363Z"
+    description: A Helm chart to release nunc
+    digest: ea2197aa348bcae7c837f238285eaaf03b677b8276e445901c0a9dfea9dc8a98
+    name: nunc-helm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/nunc-helm-0.1.1/nunc-helm-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2024-10-29T01:05:04.562684492Z"
     description: A Helm chart to release nunc
     digest: 8c0fb856961d44d7e401d425564ae2e010e5513825169e2a461963c81b9c6e23
@@ -355,4 +363,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-29T01:05:04.562909302Z"
+generated: "2024-10-29T02:40:23.036553276Z"
