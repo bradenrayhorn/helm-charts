@@ -24,6 +24,28 @@ spec:
         - name: nunc-server
           image: "ghcr.io/bradenrayhorn/nunc:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: NUNC_INSTANCE_X86
+              value: {{ .Values.nunc.instances.x86 }}
+            - name: NUNC_INSTANCE_ARM64
+              value: {{ .Values.nunc.instances.arm64 }}
+            - name: NUNC_GITHUB_REPOSITORY
+              value: {{ .Values.nunc.repository }}
+            - name: NUNC_HETZNER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: nunc-secret-config
+                  key: hetzner-token
+            - name: NUNC_GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: nunc-secret-config
+                  key: github-token
+            - name: NUNC_GITHUB_WEBHOOK_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: nunc-secret-config
+                  key: github-webhook-key
           ports:
             - name: http
               containerPort: 8000

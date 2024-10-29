@@ -9,6 +9,12 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
+nunc:
+  instances:
+    x86: cpx11
+    arm64: cax11
+  repository: bradenrayhorn/nunc
+
 serviceAccount:
   # Annotations to add to the service account
   annotations: {}
