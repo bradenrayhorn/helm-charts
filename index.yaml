@@ -132,6 +132,15 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/mise-0.1.0/mise-0.1.0.tgz
     version: 0.1.0
+  nunc-helm:
+  - apiVersion: v2
+    created: "2024-10-29T01:05:04.562684492Z"
+    description: A Helm chart to release nunc
+    digest: 8c0fb856961d44d7e401d425564ae2e010e5513825169e2a461963c81b9c6e23
+    name: nunc-helm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/nunc-helm-0.1.0/nunc-helm-0.1.0.tgz
+    version: 0.1.0
   static:
   - apiVersion: v1
     created: "2022-07-14T03:14:26.625054232Z"
@@ -346,4 +355,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-28T21:11:04.453926134Z"
+generated: "2024-10-29T01:05:04.562909302Z"
