@@ -44,6 +44,14 @@ entries:
     version: 0.1.0
   gh-kopia-backup-helm:
   - apiVersion: v2
+    created: "2024-11-16T19:17:16.988034004Z"
+    description: A Helm chart to release gh-kopia-backup
+    digest: 00787953ecebe2afd98699d48854a075c5e26ddd13630b48e42d034910ef021b
+    name: gh-kopia-backup-helm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/gh-kopia-backup-helm-0.1.1/gh-kopia-backup-helm-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2024-11-16T19:02:52.02606153Z"
     description: A Helm chart to release gh-kopia-backup
     digest: 618d27eb7886d9b1630d188eebc2070ed0662ecd6958556ef9e854d4295774d7
@@ -372,4 +380,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2024-11-16T19:02:52.026196602Z"
+generated: "2024-11-16T19:17:16.988233327Z"
