@@ -10,6 +10,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          hostname: k8s
           containers:
             - name: runner
               image: "ghcr.io/bradenrayhorn/gh-kopia-backup:{{ .Values.image.tag }}"
