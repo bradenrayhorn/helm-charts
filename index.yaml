@@ -42,6 +42,15 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/clusterissuer-0.1.0/clusterissuer-0.1.0.tgz
     version: 0.1.0
+  gh-kopia-backup-helm:
+  - apiVersion: v2
+    created: "2024-11-16T19:02:52.02606153Z"
+    description: A Helm chart to release gh-kopia-backup
+    digest: 618d27eb7886d9b1630d188eebc2070ed0662ecd6958556ef9e854d4295774d7
+    name: gh-kopia-backup-helm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/gh-kopia-backup-helm-0.1.0/gh-kopia-backup-helm-0.1.0.tgz
+    version: 0.1.0
   kanidm:
   - apiVersion: v1
     created: "2024-08-08T00:49:20.720851547Z"
@@ -363,4 +372,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2024-10-29T02:40:23.036553276Z"
+generated: "2024-11-16T19:02:52.026196602Z"
