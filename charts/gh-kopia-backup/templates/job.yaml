@@ -2,8 +2,6 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: {{ include "gh-kopia-backup.fullname" . }}-runner
-  labels:
-    {{- include "gh-kopia-backup.labelsRunner" . | nindent 4 }}
 spec:
   schedule: "{{ .Values.schedule }}"
   concurrencyPolicy: Forbid

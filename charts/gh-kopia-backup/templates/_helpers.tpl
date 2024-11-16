@@ -22,29 +22,3 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 {{- end }}
 {{- end }}
-
-{{/*
-Common labels
-*/}}
-{{- define "gh-kopia-backup.labels" -}}
-helm.sh/chart: {{ include "gh-kopia-backup.chart" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
-
-{{- define "gh-kopia-backup.labelsRunner" -}}
-{{ include "gh-kopia-backup.selectorLabels" . }}
-{{ include "gh-kopia-backup.labels" . }}
-{{- end }}
-
-{{/*
-Selector labels
-*/}}
-{{- define "gh-kopia-backup.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "gh-kopia-backup.name" . }}-runner
-app.kubernetes.io/part-of: {{ include "gh-kopia-backup.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end }}
-
