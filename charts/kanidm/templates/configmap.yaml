@@ -16,5 +16,5 @@ data:
     [online_backup]
     path = "/data/backups/"
     schedule = "00 22 * * *"
-    versions = 7
+    versions = 1
 
