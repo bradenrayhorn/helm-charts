@@ -77,6 +77,14 @@ entries:
     version: 0.1.0
   kanidm:
   - apiVersion: v1
+    created: "2025-02-26T04:28:57.673055227Z"
+    description: Deploys kanidm as single replica
+    digest: 7bae5a568c013f02ae158a014f2bdc7608d6944f6d87108bd5ace68ae88cba85
+    name: kanidm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/kanidm-0.2.1/kanidm-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v1
     created: "2024-08-08T00:49:20.720851547Z"
     description: Deploys kanidm as single replica
     digest: 7d1992d2f779165932883d0e4e582e5b4f597d1f2350b64d0ff5be8d1894431c
@@ -396,4 +404,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-26T03:26:47.275456046Z"
+generated: "2025-02-26T04:28:57.673284967Z"
