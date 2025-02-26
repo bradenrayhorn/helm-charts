@@ -13,7 +13,7 @@ spec:
           hostname: k8s
           containers:
             - name: runner
-              image: "ghcr.io/bradenrayhorn/gh-kopia-backup:{{ .Values.image.tag }}"
+              image: "ghcr.io/bradenrayhorn/zebra-gh-kopia-backup:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               env:
                 - name: GITHUB_USERNAME
