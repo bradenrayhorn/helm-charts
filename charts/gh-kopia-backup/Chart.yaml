@@ -1,5 +1,0 @@
-apiVersion: v2
-name: gh-kopia-backup-helm
-description: A Helm chart to release gh-kopia-backup
-version: 0.1.3
-
