@@ -166,6 +166,14 @@ entries:
     version: 0.1.0
   mise:
   - apiVersion: v1
+    created: "2025-04-09T01:12:40.899286433Z"
+    description: Deploys mise as single replica
+    digest: f299663cc3ad90f7ccc3a553ecda738f17ed5a44cf74d5930beb1fc75735bee1
+    name: mise
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/mise-0.2.0/mise-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v1
     created: "2024-06-30T21:13:25.492410283Z"
     description: Deploys mise as single replica
     digest: db0624e9e3193761371a7db6084f119877b5b0c98811d146fd5c8526d7affa32
@@ -404,4 +412,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-26T04:28:57.673284967Z"
+generated: "2025-04-09T01:12:40.899489873Z"
