@@ -16,7 +16,6 @@ image:
 config:
   domain: "idm.example.com"
   origin: "https://idm.example.com:8443"
-  trustXForwardedForHeader: false
 
 nameOverride: ""
 fullnameOverride: ""
