@@ -43,7 +43,7 @@ spec:
               mountPath: /var/lib/sftpgo/sftpgo.json
           env:
             - name: SFTPGO_GRACE_TIME
-              value: 10
+              value: "10"
           ports:
             - name: http
               containerPort: 8080
