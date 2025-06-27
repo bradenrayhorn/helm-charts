@@ -206,6 +206,15 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/nunc-helm-0.1.0/nunc-helm-0.1.0.tgz
     version: 0.1.0
+  sftpgo:
+  - apiVersion: v1
+    created: "2025-06-27T21:54:30.856652165Z"
+    description: Deploys sftpgo as single replica
+    digest: e50a19cb9a862d2d809c7a1ede5241958b90db748ddf65c6a142915044245a1f
+    name: sftpgo
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/sftpgo-0.1.0/sftpgo-0.1.0.tgz
+    version: 0.1.0
   static:
   - apiVersion: v1
     created: "2022-07-14T03:14:26.625054232Z"
@@ -420,4 +429,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-13T22:44:35.823343059Z"
+generated: "2025-06-27T21:54:30.856875199Z"
