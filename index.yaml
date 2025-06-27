@@ -208,6 +208,14 @@ entries:
     version: 0.1.0
   sftpgo:
   - apiVersion: v1
+    created: "2025-06-27T22:02:44.487756941Z"
+    description: Deploys sftpgo as single replica
+    digest: 64db3db7ebe9e49d65c41c5fc63dd92c60715096ead4cf930080bae0d76fdfc5
+    name: sftpgo
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/sftpgo-0.1.1/sftpgo-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v1
     created: "2025-06-27T21:54:30.856652165Z"
     description: Deploys sftpgo as single replica
     digest: e50a19cb9a862d2d809c7a1ede5241958b90db748ddf65c6a142915044245a1f
@@ -429,4 +437,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2025-06-27T21:54:30.856875199Z"
+generated: "2025-06-27T22:02:44.487941354Z"
