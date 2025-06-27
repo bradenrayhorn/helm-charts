@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "sftpgo.fullname" . }}-server
+  labels:
+    {{- include "sftpgo.labelsServer" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "sftpgo.selectorLabelsServer" . | nindent 6 }}
+  serviceName: {{ include "sftpgo.fullname" . }}-server
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "sftpgo.selectorLabelsServer" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "sftpgo.serviceAccountName" . }}
+      volumes:
+        - name: app-files
+          persistentVolumeClaim:
+            claimName: {{ include "sftpgo.fullname" . }}-files
+        - name: app-db
+          persistentVolumeClaim:
+            claimName: {{ include "sftpgo.fullname" . }}-db
+        - name: app-config
+          configMap:
+            name: {{ include "sftpgo.fullname" . }}-config
+      containers:
+        - name: sftpgo-server
+          image: "ghcr.io/drakkan/sftpgo:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: app-files
+              mountPath: /data/files
+            - name: app-db
+              mountPath: /data/db
+            - name: app-config
+              mountPath: /var/lib/sftpgo/sftpgo.json
+          env:
+            - name: SFTPGO_GRACE_TIME
+              value: 10
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: sftp
+              containerPort: 2022
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+              scheme: HTTP
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+              scheme: HTTP
+          resources:
+            {{- toYaml .Values.resources.server | nindent 12 }}
+---
+
