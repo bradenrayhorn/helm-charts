@@ -45,7 +45,7 @@ spec:
               port: 5006
           envFrom:
             - secretRef:
-                name: {{ .Values.envConfig }}
+                name: {{ .Values.envConfigSecret }}
                 optional: false
           resources:
             {{- toYaml .Values.resources.server | nindent 12 }}
