@@ -43,6 +43,10 @@ spec:
             httpGet:
               path: /health
               port: 5006
+          envFrom:
+            - secretRef:
+                name: {{ .Values.envConfig }}
+                optional: false
           resources:
             {{- toYaml .Values.resources.server | nindent 12 }}
 ---
