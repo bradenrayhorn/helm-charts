@@ -99,7 +99,7 @@ data:
           }
         ],
         "max_auth_tries": 0,
-        "host_keys": [],
+        "host_keys": ["/data/db/id_rsa", "/data/db/id_ecdsa", "/data/db/id_ed25519"],
         "host_certificates": [],
         "host_key_algorithms": [],
         "kex_algorithms": [],
