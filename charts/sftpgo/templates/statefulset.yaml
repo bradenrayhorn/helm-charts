@@ -40,7 +40,7 @@ spec:
             - name: app-db
               mountPath: /data/db
             - name: app-config
-              mountPath: /etc/sftpgo/sftpgo.json
+              mountPath: /etc/sftpgo
           env:
             - name: SFTPGO_GRACE_TIME
               value: "10"

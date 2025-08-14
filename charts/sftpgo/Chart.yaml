@@ -1,4 +1,4 @@
 apiVersion: v1
 description: Deploys sftpgo as single replica
 name: sftpgo
-version: 0.1.2
+version: 0.1.3
