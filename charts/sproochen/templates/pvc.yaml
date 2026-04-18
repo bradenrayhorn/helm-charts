@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "sproochen.fullname" . }}-static-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.pvc-static.storageClassName }}
+  resources:
+    requests:
+      storage: {{ .Values.pvc-static.storageRequest }}

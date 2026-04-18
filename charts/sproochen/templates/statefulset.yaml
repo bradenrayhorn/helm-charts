@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "sproochen.fullname" . }}-server
+  labels:
+    {{- include "sproochen.labelsServer" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "sproochen.selectorLabelsServer" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "sproochen.selectorLabelsServer" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "sproochen.serviceAccountName" . }}
+      volumes:
+        - name: audio-data
+          persistentVolumeClaim:
+            claimName: {{ include "sproochen.fullname" . }}-static-data
+      containers:
+        - name: sproochen-server
+          image: "ghcr.io/bradenrayhorn/sproochen-app:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: audio-data
+              mountPath: /usr/share/nginx/html/audio
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+          resources:
+            {{- toYaml .Values.resources.server | nindent 12 }}
+
