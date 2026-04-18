@@ -257,6 +257,14 @@ entries:
     version: 0.1.0
   sproochen-helm:
   - apiVersion: v2
+    created: "2026-04-18T21:25:25.007521123Z"
+    description: A Helm chart to release sproochen
+    digest: 088a3bb10f33c7183dda39b3bb4d7eebf9af51db89d3f4bb57eea1af1d806a7b
+    name: sproochen-helm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/sproochen-helm-0.1.1/sproochen-helm-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2026-04-18T21:16:33.158643226Z"
     description: A Helm chart to release sproochen
     digest: 0d22d4522f6c103a591ce70bb278068c8a908d530d794a9ea0e37c83b79e4998
@@ -478,4 +486,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2026-04-18T21:16:33.158878826Z"
+generated: "2026-04-18T21:25:25.007729883Z"
