@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: {{ .Values.pvc-static.storageClassName }}
+  storageClassName: {{ .Values.pvc.static.storageClassName }}
   resources:
     requests:
-      storage: {{ .Values.pvc-static.storageRequest }}
+      storage: {{ .Values.pvc.static.storageRequest }}

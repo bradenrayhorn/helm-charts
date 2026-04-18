@@ -32,9 +32,10 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-pvc-static:
-  storageClassName: local-path
-  storageRequest: 50Mi
+pvc:
+  static:
+    storageClassName: local-path
+    storageRequest: 50Mi
 
 resources:
   ui: {}
