@@ -255,6 +255,15 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/sftpgo-0.1.0/sftpgo-0.1.0.tgz
     version: 0.1.0
+  sproochen-helm:
+  - apiVersion: v2
+    created: "2026-04-18T21:16:33.158643226Z"
+    description: A Helm chart to release sproochen
+    digest: 0d22d4522f6c103a591ce70bb278068c8a908d530d794a9ea0e37c83b79e4998
+    name: sproochen-helm
+    urls:
+    - https://github.com/bradenrayhorn/helm-charts/releases/download/sproochen-helm-0.1.0/sproochen-helm-0.1.0.tgz
+    version: 0.1.0
   static:
   - apiVersion: v1
     created: "2022-07-14T03:14:26.625054232Z"
@@ -469,4 +478,4 @@ entries:
     urls:
     - https://github.com/bradenrayhorn/helm-charts/releases/download/webapp-0.1.0/webapp-0.1.0.tgz
     version: 0.1.0
-generated: "2025-08-14T12:42:47.483068346Z"
+generated: "2026-04-18T21:16:33.158878826Z"
