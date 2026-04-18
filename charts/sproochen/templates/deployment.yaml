@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "sproochen.fullname" . }}-server
+  name: {{ include "sproochen.fullname" . }}-app
   labels:
-    {{- include "sproochen.labelsServer" . | nindent 4 }}
+    {{- include "sproochen.labelsApp" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      {{- include "sproochen.selectorLabelsServer" . | nindent 6 }}
+      {{- include "sproochen.selectorLabelsApp" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,7 +16,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "sproochen.selectorLabelsServer" . | nindent 8 }}
+        {{- include "sproochen.selectorLabelsApp" . | nindent 8 }}
     spec:
       serviceAccountName: {{ include "sproochen.serviceAccountName" . }}
       volumes:

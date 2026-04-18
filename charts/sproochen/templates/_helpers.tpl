@@ -41,8 +41,8 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
-{{- define "sproochen.labelsServer" -}}
-{{ include "sproochen.selectorLabelsServer" . }}
+{{- define "sproochen.labelsApp" -}}
+{{ include "sproochen.selectorLabelsApp" . }}
 {{ include "sproochen.labels" . }}
 {{- end }}
 
@@ -54,8 +54,8 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "sproochen.selectorLabelsServer" -}}
-app.kubernetes.io/name: {{ include "sproochen.name" . }}-server
+{{- define "sproochen.selectorLabelsApp" -}}
+app.kubernetes.io/name: {{ include "sproochen.name" . }}-app
 app.kubernetes.io/part-of: {{ include "sproochen.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}

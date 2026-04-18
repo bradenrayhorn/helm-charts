@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "sproochen.fullname" . }}-server
+  name: {{ include "sproochen.fullname" . }}-app
   labels:
-    {{- include "sproochen.labelsServer" . | nindent 4 }}
+    {{- include "sproochen.labelsApp" . | nindent 4 }}
 spec:
   type: ClusterIP
   ports:
@@ -12,5 +12,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "sproochen.selectorLabelsServer" . | nindent 4 }}
+    {{- include "sproochen.selectorLabelsApp" . | nindent 4 }}
 ---

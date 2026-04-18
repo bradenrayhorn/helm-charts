@@ -30,8 +30,8 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ $fullName }}-server
+                name: {{ $fullName }}-app
                 port:
-                  number: 5006
+                  number: 80
     {{- end }}
   {{- end }}
